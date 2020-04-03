@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search() {
+function Search(props) {
     return (
         <div>
             <h1>Search Page</h1>
@@ -10,11 +10,11 @@ function Search() {
                         <div className="row">
                             <div className="input-field col l6 m6 s12">
                                 <i className="material-icons prefix">book</i>
-                                <input id="icon_prefix" type="text" className="validate"/>
+                                <input id="icon_prefix" type="text" className="validate" value={props.value} onChange={props.handleInputChange}/>
                                 <label for="icon_prefix">Book Title</label>
                             </div>
-                            <button id="btnPosition" class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
+                            <button id="btnPosition" className="btn waves-effect waves-light" type="submit" name="action" value={props.value} onClick={props.handleFormSubmit}>Submit
+                                <i className="material-icons right">send</i>
                             </button>
                         </div>
                     </form>
