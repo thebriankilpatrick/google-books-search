@@ -1,10 +1,11 @@
 import axios from "axios";
+const key = "&key=AIzaSyBUESdINl0gPmHd07aS-RUV-gPZefpsrQU";
 
 export default {
 
     // Searches Google Books API
     searchBook: function(bookTitle) {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + bookTitle);
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + bookTitle + key);
     },
 
     // Saves searched book to DB
