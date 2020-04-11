@@ -10,7 +10,8 @@ import "./App.css";
 class App extends Component {
 
   state = {
-    searchedBook: ""
+    searchedBook: "",
+    searchedResults: []
   };
 
   handleInputChange = (event) => {
@@ -22,9 +23,18 @@ class App extends Component {
     console.log(this.state.searchedBook);
     event.preventDefault();
     API.searchBook(this.state.searchedBook).then(res => {
-      console.log(res);
+      // console.log(this.state);
+      this.setState({ searchedResults: res.data.items });
+      console.log(this.state.searchedResults)
     })
   }
+
+  // value={this.state.searchedBook}
+  // title={this.state.searchedResults.volumeInfo.title}
+  // author={this.state.searchedResults.volumeInfo.authors[0]}
+  // description={this.state.searchedResults.volumeInfo.description}
+  // coverImg={this.state.searchedResults.volumeInfo.imageLinks.smallThumbnail}
+  // link={this.state.searchedResults.volumeInfo.infoLink}
 
   render() {
     return (
@@ -36,7 +46,7 @@ class App extends Component {
               <Search 
                 handleFormSubmit={this.handleFormSubmit}
                 onChange={this.handleInputChange}
-                value={this.state.searchedBook}
+                searchedResults={this.state.searchedResults}
               />
             </Route>
             <Route exact path="/saved">

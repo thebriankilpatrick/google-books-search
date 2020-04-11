@@ -19,9 +19,39 @@ function Search(props) {
                         </div>
                     </form>
                 </div>
+                <div className="row">
+                    {props.searchedResults.map((results) => {
+                        return (
+                            <div className="col l3 m4 s12">
+                                <div className="card">
+                                    <div className="card-image waves-effect waves-block waves-light">
+                                        <img className="activator" src={results.volumeInfo.imageLinks.thumbnail}/>
+                                    </div>
+                                    <div className="card-content">
+                                        <span className="card-title activator grey-text text-darken-4">{results.volumeInfo.title}<i className="material-icons right">more_vert</i></span>
+                                        <p><a href={results.volumeInfo.infoLink} target="_blank">More Info</a></p>
+                                        <p><a>Save Book</a></p>
+                                    </div>
+                                    <div className="card-reveal">
+                                        <span className="card-title grey-text text-darken-4">{results.volumeInfo.title}<i className="material-icons right">close</i></span>
+                                        <p>Author: {results.volumeInfo.authors[0]}</p>
+                                        <p>{results.volumeInfo.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
 }
 
 export default Search;
+
+
+// title={this.state.searchedResults.volumeInfo.title}
+  // author={this.state.searchedResults.volumeInfo.authors[0]}
+  // description={this.state.searchedResults.volumeInfo.description}
+  // coverImg={this.state.searchedResults.volumeInfo.imageLinks.smallThumbnail}
+  // link={this.state.searchedResults.volumeInfo.infoLink}
