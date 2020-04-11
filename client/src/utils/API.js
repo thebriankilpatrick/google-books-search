@@ -14,21 +14,16 @@ export default {
 
     // Saves searched book to DB
     saveBook: function(bookData) {
-        return axios.post("/api/books", bookData);
+        return axios.post("/book", bookData);
     },
 
     // Gets all saved books from DB
     viewSavedBooks: function() {
-        return axios.get("/api/books");
-    },
-
-    // Possibly a search function to search DB for specific book ???
-    viewSavedBook: function(bookTitle) {
-        return axios.get("/api/books/" + bookTitle);
+        return axios.get("/book");
     },
 
     // Deletes a book from DB
     deleteBook: function(id) {
-        return axios.delete("/api/books/" + id);
+        return axios.delete("/book/" + id);
     }
 }

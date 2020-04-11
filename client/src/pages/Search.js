@@ -3,7 +3,7 @@ import React from "react";
 function Search(props) {
     return (
         <div>
-            <h1>Search Page</h1>
+            <h3>Search Page</h3>
             <div className="container">
                 <div className="row">
                     <form className="col l12 m12 s12">

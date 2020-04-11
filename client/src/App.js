@@ -13,8 +13,16 @@ class App extends Component {
   state = {
     searchedBook: "",
     searchedResults: [],
-    savedBooks: []
+    savedBooks: [],
+    myBooks: []
   };
+
+  componentDidMount = () => {
+    API.viewSavedBooks().then(res => {
+      this.setState({ myBooks: res.data });
+      console.log(this.state.myBooks);
+    })
+  }
 
   handleInputChange = (event) => {
     this.setState({searchedBook: event.target.value});
@@ -41,19 +49,23 @@ class App extends Component {
     }).then(() => {
       API.saveBook({
         title: this.state.savedBooks.volumeInfo.title,
-         authors: this.state.savedBooks.volumeInfo.authors[0],
+         author: this.state.savedBooks.volumeInfo.authors[0],
          description: this.state.savedBooks.volumeInfo.description,
-         image: this.state.savedBooks.volumeInfo.imageLinks.thumbnail,
+         coverImage: this.state.savedBooks.volumeInfo.imageLinks.thumbnail,
          link: this.state.savedBooks.volumeInfo.infoLink
       }).then(res => {
         console.log(res);
       })
     })
+  }
 
-    // API.searchID(id).then(res => {
-    //   // this.setState({savedBooks: res.data.items});
-    // })
-    // this.setState({ savedBooks: data })
+  handleDelete = (event) => {
+    let id = event.target.id;
+    API.deleteBook(id).then(res => {
+      this.componentDidMount();
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -62,6 +74,14 @@ class App extends Component {
         <div>
           <Header></Header>
           <Wrapper >
+          <Route exact path="/">
+              <Search 
+                handleFormSubmit={this.handleFormSubmit}
+                onChange={this.handleInputChange}
+                searchedResults={this.state.searchedResults}
+                handleSave={this.handleSave}
+              />
+            </Route>
             <Route exact path="/search">
               <Search 
                 handleFormSubmit={this.handleFormSubmit}
@@ -71,7 +91,10 @@ class App extends Component {
               />
             </Route>
             <Route exact path="/saved">
-              <Saved /> 
+              <Saved 
+                myBooks={this.state.myBooks}
+                handleDelete={this.handleDelete}
+              /> 
             </Route>     
           </Wrapper>
         </div>
