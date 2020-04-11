@@ -10,7 +10,7 @@ function Search(props) {
                         <div className="row">
                             <div className="input-field col l6 m6 s12">
                                 <i className="material-icons prefix">book</i>
-                                <input id="icon_prefix" type="text" className="validate" value={props.value} onChange={props.handleInputChange}/>
+                                <input id="icon_prefix" type="text" className="validate" value={props.handleInputChange} onChange={props.onChange}/>
                                 <label for="icon_prefix">Book Title</label>
                             </div>
                             <button id="btnPosition" className="btn waves-effect waves-light" type="submit" name="action" value={props.value} onClick={props.handleFormSubmit}>Submit

@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const booksController = require("../../controllers/booksController");
+const bookController = require("../controllers/bookController");
 
-router.route("/").get(booksController.findAll).post(booksController.create);
-router.route("/:id").delete(booksController.remove);
+router.route("/").get(bookController.findAll).post(bookController.create);
+router.route("/:id").delete(bookController.remove);
 
 module.exports = router;

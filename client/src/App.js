@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   handleFormSubmit = (event) => {
+    console.log(this.state.searchedBook);
     event.preventDefault();
     API.searchBook(this.state.searchedBook).then(res => {
       console.log(res);
@@ -30,11 +31,17 @@ class App extends Component {
       <Router >
         <div>
           <Header></Header>
-          <Wrapper onClick={this.handleFormSubmit}
-            onChange={this.handleInputChange}
-            value={this.state.searchedBook}>
-            <Route exact path="/saved" component={Saved}/>
-            <Route exact path="/search" component={Search}/>     
+          <Wrapper >
+            <Route exact path="/search">
+              <Search 
+                handleFormSubmit={this.handleFormSubmit}
+                onChange={this.handleInputChange}
+                value={this.state.searchedBook}
+              />
+            </Route>
+            <Route exact path="/saved">
+              <Saved /> 
+            </Route>     
           </Wrapper>
         </div>
       </Router>
