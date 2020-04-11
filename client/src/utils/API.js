@@ -8,9 +8,13 @@ export default {
         return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + bookTitle + key);
     },
 
+    // searchID: function(bookID) {
+    //     return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + bookID + key);
+    // },
+
     // Saves searched book to DB
     saveBook: function(bookData) {
-        return axios.post("/api/books" + bookData);
+        return axios.post("/api/books", bookData);
     },
 
     // Gets all saved books from DB

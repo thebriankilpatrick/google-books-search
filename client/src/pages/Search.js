@@ -30,7 +30,7 @@ function Search(props) {
                                     <div className="card-content">
                                         <span className="card-title activator grey-text text-darken-4">{results.volumeInfo.title}<i className="material-icons right">more_vert</i></span>
                                         <p><a href={results.volumeInfo.infoLink} target="_blank">More Info</a></p>
-                                        <p><a>Save Book</a></p>
+                                        <p><a onClick={props.handleSave} id={results.id} className="pointer">Save Book</a></p>
                                     </div>
                                     <div className="card-reveal">
                                         <span className="card-title grey-text text-darken-4">{results.volumeInfo.title}<i className="material-icons right">close</i></span>
