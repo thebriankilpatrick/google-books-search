@@ -21,7 +21,7 @@ app.use(routes);
 
 // Define API routes here
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user:googlebooks1@ds131747.mlab.com:31747/heroku_jndmr5fb");
 
 
 
